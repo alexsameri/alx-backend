@@ -2,7 +2,6 @@
 '''Module 1
 '''
 import csv
-import math
 from typing import List
 
 
@@ -26,7 +25,6 @@ class Server:
             self.__dataset = dataset[1:]
 
         return self.__dataset
-    
     @staticmethod
     def index_range(page, page_size):
         '''Retrieve the index range from a given page and page_size
