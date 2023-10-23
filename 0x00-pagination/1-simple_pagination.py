@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 '''Module 1
 '''
 import csv
@@ -27,7 +27,8 @@ class Server:
 
         return self.__dataset
     
-    def index_range(self, page, page_size):
+    @staticmethod
+    def index_range(page, page_size):
         '''Retrieve the index range from a given page and page_size
         '''
         start_index = (page - 1) * page_size
@@ -38,5 +39,5 @@ class Server:
         """Use assert to verify arguments age > 0
         """
         assert page > 0 and page_size > 0
-        startIndex, endIndex = self.index_range(page, page_size)
-        return self.dataset()[startIndex:endIndex]
+        start_index, end_index = self.index_range(page, page_size)
+        return self.dataset()[start_index:end_index]
