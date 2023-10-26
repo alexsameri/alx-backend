@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Caching inheritance
 """
-from Base_Caching import BaseCaching
+BaseCaching = __import__('Base_Caching').BaseCaching
 
 
 class BasicCache(BaseCaching):
