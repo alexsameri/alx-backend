@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""module 1
+"""First in, first out Algorithm
 """
 from collections import OrderedDict
 BaseCaching = __import__('base_caching').BaseCaching
