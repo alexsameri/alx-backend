@@ -1,4 +1,7 @@
-
+#!/usr/bin/env python3
+"""
+last in first out
+"""
 BaseCaching = __import__('Base_Caching').BaseCaching
 
 
