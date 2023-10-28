@@ -17,7 +17,7 @@ class LIFOCache(BaseCaching):
         discard the last item
         """
         if key is not None or item is not None:
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            if len(self.cache_data) == BaseCaching.MAX_ITEMS:
                 key_out = list(self.cache_data.keys())[-1]
                 print(f"DISCARD: {key_out}")
                 del self.cache_data[key_out]
