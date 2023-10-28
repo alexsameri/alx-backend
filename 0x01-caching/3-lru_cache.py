@@ -20,7 +20,7 @@ class LRUCache(BaseCaching):
         if key and item:
             if key in self.cache_data:
                 self.queue.remove(key)
-            elif len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            elif len(self.cache_data) == BaseCaching.MAX_ITEMS:
                 discard = self.queue.pop(0)
                 del self.cache_data[discard]
                 print(f'DISCARD: {discard}')
