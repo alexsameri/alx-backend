@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 """ 3-main """
 LRUCache = __import__('3-lru_cache').LRUCache
 
