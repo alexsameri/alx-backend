@@ -2,17 +2,15 @@
 """
 A Basic flask application
 """
-import datetime
+import pytz
 from typing import (
     Dict, Union
 )
-import pytz
 
 from flask import Flask
 from flask import g, request
 from flask import render_template
 from flask_babel import Babel
-from flask_babel import format_datetime
 
 
 class Config(object):
@@ -40,7 +38,7 @@ users = {
 }
 
 
-def get_user(user_id) -> Union[Dict[str, Union[str, None]], None]:
+def get_user(id) -> Union[Dict[str, Union[str, None]], None]:
     """
     Validate user login details
     Args:
@@ -48,7 +46,7 @@ def get_user(user_id) -> Union[Dict[str, Union[str, None]], None]:
     Returns:
         (Dict): user dictionary if id is valid else None
     """
-    return users.get(int(id), None)
+    return users.get(int(id), {})
 
 
 @babel.localeselector
@@ -76,10 +74,9 @@ def get_timezone() -> str:
     if not tz and g.user:
         tz = g.user['timezone']
     try:
-        tz = pytz.timezone(tz).zone
+        return pytz.timezone(tz).zone
     except pytz.exceptions.UnknownTimeZoneError:
-        tz = app.config['BABEL_DEFAULT_TIMEZONE']
-    return tz
+        return app.config['BABEL_DEFAULT_TIMEZONE']
 
 
 @app.before_request
@@ -88,7 +85,6 @@ def before_request() -> None:
     Adds valid user to the global session object `g`
     """
     setattr(g, 'user', get_user(request.args.get('login_as', 0)))
-    setattr(g, 'time', format_datetime(datetime.datetime.now()))
 
 
 @app.route('/', strict_slashes=False)
@@ -96,7 +92,7 @@ def index() -> str:
     """
     Renders a basic html template
     """
-    return render_template('index.html')
+    return render_template('7-index.html')
 
 
 if __name__ == '__main__':

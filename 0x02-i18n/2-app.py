@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request
 from Flask_Babel import Babel
 
+
 class Config:
     """
     Setting the languages and the locale and timezone
@@ -17,13 +18,13 @@ app.config.from_object(Config)
 app.config['BABEL_SUPPORTED_LOCALES'] = ['en', 'fr', 'es']
 babel = Babel(app)
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def hello_world():
     """to run on the website"""
-    return render_template('1-index.html')
+    return render_template('2-index.html')
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """
     Determine the bestmatch with our supported languages
     """
