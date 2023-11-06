@@ -29,7 +29,6 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@babel.localeselector
 def get_locale() -> str:
     """
     Gets locale from request object
@@ -72,7 +71,7 @@ def index() -> str:
     """
     Renders a basic html template
     """
-    return render_template('5-index.html')
+    return render_template('0-index.html')
 
 
 if __name__ == '__main__':

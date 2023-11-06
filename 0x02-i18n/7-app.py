@@ -49,7 +49,6 @@ def get_user(id) -> Union[Dict[str, Union[str, None]], None]:
     return users.get(int(id), {})
 
 
-@babel.localeselector
 def get_locale() -> str:
     """
     Gets locale from request object
@@ -65,7 +64,6 @@ def get_locale() -> str:
             return locale
 
 
-@babel.timezoneselector
 def get_timezone() -> str:
     """
     Gets timezone from request object

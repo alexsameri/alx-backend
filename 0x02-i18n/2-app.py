@@ -2,7 +2,7 @@
 """A babel and flask app"""
 
 from flask import Flask, render_template, request
-from Flask_Babel import Babel
+from flask_babel import Babel
 
 
 class Config:
@@ -23,7 +23,6 @@ def hello_world():
     """to run on the website"""
     return render_template('2-index.html')
 
-@babel.localeselector
 def get_locale() -> str:
     """
     Determine the bestmatch with our supported languages
